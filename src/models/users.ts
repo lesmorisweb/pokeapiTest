@@ -1,5 +1,6 @@
 
-import { Column, Model, Table, DataType} from "sequelize-typescript"
+import { Column, Model, Table, DataType, HasMany, ForeignKey} from "sequelize-typescript"
+import { PokeSearch } from "./pokeSearch"
 
 @Table
 export class User extends Model<User, IUsersAttributes>{
@@ -21,6 +22,11 @@ export class User extends Model<User, IUsersAttributes>{
         allowNull: false,
     })
     declare password: string
+
+    @HasMany(()=>PokeSearch,{
+        foreignKey: "searchId"
+    })
+    declare pokeSearch: PokeSearch[]
 }
 
 
@@ -28,5 +34,5 @@ export class User extends Model<User, IUsersAttributes>{
 interface IUsersAttributes{
     name: string,
     userName: string,
-    password: string
+    password: string,
 }
