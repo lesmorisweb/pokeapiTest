@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User } from "../models/users";
 
 
-export async function createUserController(req: Request, res: Response) {
+export async function createUserController(req: Request, res:Response) {
     
     const user= req.body
 
