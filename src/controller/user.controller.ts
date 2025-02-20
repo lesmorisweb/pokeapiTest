@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User } from "../models/users";
 
 
-export async function createUserController(req: Request, res:Response) {
+export async function createUserController(req: Request, res: Response) {
     
     const user= req.body
 
@@ -10,7 +10,7 @@ export async function createUserController(req: Request, res:Response) {
         res.status(400).json("request invalid, please check it and try again")
     }
 
-    const userCreated= User.create({
+    const userCreated= await User.create({
         name: user.name,
         password: user.password,
         userName: user.userName

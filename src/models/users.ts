@@ -23,10 +23,6 @@ export class User extends Model<User, IUsersAttributes>{
     })
     declare password: string
 
-    @HasMany(()=>PokeSearch,{
-        foreignKey: "searchId"
-    })
-    declare pokeSearch: PokeSearch[]
 }
 
 
