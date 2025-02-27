@@ -1,5 +1,5 @@
 
-import { Column, Model, Table, DataType, PrimaryKey, BelongsTo, ForeignKey} from "sequelize-typescript"
+import { Column, Model, Table, DataType, BelongsTo} from "sequelize-typescript"
 import { User } from "./users"
 
 
@@ -7,23 +7,29 @@ import { User } from "./users"
 export class PokeSearch extends Model <PokeSearch, IPokeSearch>{
 
     @Column({
-        type: DataType.STRING,
+        type: DataType.INTEGER,
         allowNull: false
     })
-    declare photo: string
+    declare pokemonId: number
 
     @Column({
         type: DataType.STRING,
         allowNull: false
     })
-    declare name: string
+    declare pokemonName: string
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    declare userName: string
 
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
         primaryKey: true
     })
-    declare searchId: number
+    declare userId: number
 
     @BelongsTo(()=> User, {
         foreignKey: "userId"
@@ -32,7 +38,8 @@ export class PokeSearch extends Model <PokeSearch, IPokeSearch>{
 }
 
 interface IPokeSearch {
-    photo: string,
-    name: string,
+    pokemonId: number,
+    pokemonName: string,
+    userName: string,
     userId: number
 }

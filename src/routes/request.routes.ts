@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { getPokemons } from "../controller/request.controller";
-
+import { getPokemonsByName } from "../controller/seatch.controller";
 
 const router= Router()
 
-router.get("/request", getPokemons)
+router.post("/getpoke", getPokemonsByName)
+
+export default router

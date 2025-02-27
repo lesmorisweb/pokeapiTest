@@ -1,17 +1,14 @@
 import axios from "axios"
 
 
-export const pokeData=  async function getApiData() {
-    const url= "https://pokeapi.co/api/v2/"
-    const query= ""
+export async function getApiData(name:string) {
+    try {
+        const url= `https://pokeapi.co/api/v2/pokemon/${name}`
 
-    const completeUrl= `${url}${query}`
-
-    await axios.get(completeUrl)
-    .then((result)=> {
-        return result.data })
-    .catch((e)=>
-        {return (e)}
-    )
+        return await axios.get(url)
+    }
+    catch(e){
+        return e
+    }
 
 }
